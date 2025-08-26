@@ -8,11 +8,11 @@
 
                 <div class="d-flex justify-content-between my-3">
                     <h2 class="text-center">Add Student</h2>
-                    <a href="{{ route('student.index') }}" class="btn btn-outline-warning">All Students</a>
+                    <a href="{{ route('students.index') }}" class="btn btn-outline-warning">All Students</a>
                 </div>
 
                 <div class="card-body border border-light rounded">
-                    <form action="{{ route('student.store') }}" method="POST">
+                    <form action="{{ route('students.store') }}" method="POST">
                         @csrf
                         <div class="mb-3">
                             <label class="form-label">Name</label>

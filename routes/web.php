@@ -12,9 +12,11 @@ Route::get('/home', function () {
 });
 
 // Display all students
-Route::get('/students', [studentController::class, 'index'])->name('student.index');
+Route::get('/students', [studentController::class, 'index'])->name('students.index');
 // Route to display the form for creating a student
-Route::get('/student/create', [studentController::class, 'create'])->name('student.create');
+Route::get('/students/create', [studentController::class, 'create'])->name('students.create');
 // Store a student in the students table
-Route::post('/students', [studentController::class, 'store'])->name('student.store');
+Route::post('/students', [studentController::class, 'store'])->name('students.store');
+// Show details of a specific student by id
+Route::get('/students/{student}', [studentController::class, 'show'])->name('students.show');
 

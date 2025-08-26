@@ -5,7 +5,7 @@
     <div class="container my-4">
         <div class="d-flex justify-content-between">
             <h2 class=" text-white">{{ $students->total() }} Students List</h2>
-            <a href="{{ route('student.create') }}" class="btn btn-outline-info">Add Students</a>
+            <a href="{{ route('students.create') }}" class="btn btn-outline-info">Add Students</a>
         </div>
         <!-- Success message -->
         @session('success')
@@ -32,7 +32,7 @@
                         <th scope="row">{{ $student->email }}</th>
                         <th scope="row">{{ $student->phone }}</th>
                         <td>
-                            <a href="" class="btn btn-outline-warning">View</a>
+                            <a href="{{ route('students.show', $student->id) }}" class="btn btn-outline-warning">View</a>
                             <a href="" class="btn btn-outline-info">Edit</a>
                             <a href="" class="btn btn-outline-danger">Delete</a>
                         </td>
