@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class studentController extends Controller
 {
@@ -21,8 +22,8 @@ class studentController extends Controller
     {
         $request->validate([
             'name' => 'required|string|min:2|max:255',
-            'email' => 'required|email|unique:students,email|',
-            'phone' => 'required|digits:11|unique:students,phone|'
+            'email' => 'required|email|unique:students,email',
+            'phone' => 'required|digits:11|unique:students,phone'
         ]);
         // dd('ok');
 
@@ -37,5 +38,28 @@ class studentController extends Controller
         // dd($student);
         return view('students.show', compact('student'));
         // return view('students.show', compact('student'));
+    }
+
+    public function edit(Student $student)
+    {
+        return view('students.edit', compact('student'));
+    }
+
+    public function update(Request $request, Student $student)
+    {
+        $request->validate([
+            'name' => 'required|string|min:2|max:255',
+            'email' => [
+                'required',
+                'email',
+                Rule::unique('students', 'email')->ignore($student->id)
+            ],
+            'phone' => [
+                'required',
+                'digits:11',
+                Rule::unique('students', 'phone')->ignore($student->id)
+            ]
+        ]);
+        dd('ok');
     }
 }

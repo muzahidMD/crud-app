@@ -19,4 +19,7 @@ Route::get('/students/create', [studentController::class, 'create'])->name('stud
 Route::post('/students', [studentController::class, 'store'])->name('students.store');
 // Show details of a specific student by id
 Route::get('/students/{student}', [studentController::class, 'show'])->name('students.show');
-
+// Edit on existing student
+Route::get('/students/{student}/edit', [studentController::class, 'edit'])->name('students.edit');
+// Update student
+Route::put('/students/{student}', [studentController::class, 'update'])->name('students.update');
