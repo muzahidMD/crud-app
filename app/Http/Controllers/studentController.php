@@ -28,7 +28,7 @@ class studentController extends Controller
         // dd('ok');
 
         Student::create($request->all());
-        return redirect()->route('student.index')->with('success', 'Student Added Successfully');
+        return redirect()->route('students.index')->with('success', 'Student Added Successfully');
     }
 
     // Show student
@@ -60,6 +60,8 @@ class studentController extends Controller
                 Rule::unique('students', 'phone')->ignore($student->id)
             ]
         ]);
-        dd('ok');
+        // dd('ok');
+        $student->update($request->all());
+        return redirect()->route('students.index')->with('success', 'Student Updated Successfully');
     }
 }
